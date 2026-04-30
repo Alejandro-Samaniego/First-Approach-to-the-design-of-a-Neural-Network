@@ -7,7 +7,7 @@ Note that for more complex problems one should probably reconsider the architech
 
 ## Convergence analysis
 To ilustrate the functioning of the net, we present a comparaison of its accuracy vs the accuracy obtained with SVM, for different sizes of the training set. The NN performs much better than SVM when the size of the dataset is small.
-![NN vs SVM](our_NN/figures/svm_vs_nn.jpg)
+![NN vs SVM](figures/svm_vs_nn.jpg)
 
 ## Comments on use
 **A) Use the network and train it with MNIST:**
