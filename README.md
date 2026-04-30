@@ -21,3 +21,184 @@ If we want to use the NN to learn from a different dataset, we have to follow th
 i) Modify the run.py file to load the desired dataset.
 
 ii) When calling the NN on the run.py file, remember that the number of neurons on the first and last layer of the NN must agree with the features of the training data. As an ilustrative example, to train the NN with the MNIST dataset we must keep in mind that the images have (28x28)=784 pixels, meaning that the first layer should have 784 neurons. Next, concerning the last layer, if we want to predict numbers from 0 to 9, it is a natural choice to set the number of neurons to be equal to 10, so that each neuron is associated with one possible output. 
+
+
+
+🧠 Neural Network for Handwritten Digit Recognition
+A custom implementation of a fully‑connected neural network trained on MNIST/EMNIST, including image preprocessing and a Tkinter drawing interface.
+
+📌 Overview
+This project implements a from‑scratch neural network in Python using only NumPy and standard libraries.
+It includes:
+
+A configurable feedforward neural network
+
+Two training modes: quadratic loss and cross‑entropy loss
+
+Manual stochastic gradient descent (SGD) with mini‑batches
+
+Full backpropagation implementation
+
+Image preprocessing pipeline for user‑provided images
+
+A Tkinter GUI that allows drawing digits and visualizing prediction probabilities
+
+Tools to save trained weights and biases
+
+The goal is educational: understanding how neural networks work internally without relying on high‑level frameworks like PyTorch or TensorFlow.
+
+🏗️ Network Architecture
+The class Neural_Network receives a list describing the number of neurons per layer:
+
+python
+nn = Neural_Network([784, 64, 32, 10])
+This creates:
+
+Input layer: 784 neurons (28×28 pixels)
+
+Hidden layers: 64 and 32 neurons
+
+Output layer: 10 neurons (digits 0–9)
+
+Weights are initialized using a Gaussian distribution scaled by
+
+1
+/
+number of inputs
+🚀 Training Methods
+Two training functions are available:
+
+1. SGD_quad — Quadratic Loss
+Uses the classical quadratic cost
+
+Backpropagation includes the derivative of the sigmoid
+
+Suitable for experimentation and learning
+
+2. SGD_entropy — Cross‑Entropy Loss
+Uses cross‑entropy cost
+
+Faster and more stable training
+
+Includes L2 regularization via lambda_learn
+
+Both methods:
+
+Shuffle data using random mini‑batches
+
+Update weights and biases after each batch
+
+Optionally evaluate accuracy on test data
+
+Save final weights to a .txt file
+
+🔁 Feedforward & Backpropagation
+Feedforward
+Computes activations layer by layer
+
+Uses the sigmoid activation function
+
+Returns both activations and pre‑activation values
+
+Backpropagation
+Two versions:
+
+backprop → quadratic loss
+
+backprop_entropy → cross‑entropy loss
+
+Both compute gradients for:
+
+Weight matrices
+
+Bias vectors
+
+🔍 Prediction
+The method:
+
+python
+predict, aL = self.prediction(image)
+returns:
+
+predict: the digit with highest activation
+
+aL: the full 10‑dimensional output vector
+
+🖼️ Image Preprocessing
+The function preprocess_image handles:
+
+Grayscale conversion
+
+Normalization
+
+Cropping based on pixel intensity changes
+
+Resizing to 28×28
+
+Scaling pixel values to [0,1]
+
+Standardization using a fitted StandardScaler
+
+This allows predicting digits from arbitrary user images.
+
+🎨 Tkinter GUI for Drawing Digits
+The project includes an interactive GUI:
+
+Features:
+A 280×280 black canvas to draw digits
+
+Automatic prediction every 100 ms
+
+A bar‑style visualization of the 10 output activations
+
+A “Clear Canvas” button
+
+Real‑time feedback
+
+Key functions:
+setup_gui() → builds the interface
+
+paint() → handles drawing
+
+predict_digit_popup() → updates predictions
+
+preprocess_image_c() → prepares the drawn digit
+
+📂 File Saving
+After training, weights and biases are saved in human‑readable format using:
+
+python
+convert_and_write(file, "Weights", self.weights)
+This avoids retraining every time.
+
+📁 Project Structure (suggested)
+Código
+our_NN/
+│── NN.py                # Main neural network implementation
+│── run.py               # Script to train and test the network
+│── fotos/               # User images for prediction
+│── final_weights_*.txt  # Saved weights after training
+│── README.md            # Project documentation
+🧪 Requirements
+Python 3
+
+NumPy
+
+Matplotlib
+
+Pillow
+
+Tkinter (included with most Python installations)
+
+scikit‑learn
+
+Install missing packages with:
+
+bash
+pip install numpy matplotlib pillow scikit-learn termcolor
+🙌 Authors
+Janot Vilaró
+
+Alejandro Samaniego
+
+
