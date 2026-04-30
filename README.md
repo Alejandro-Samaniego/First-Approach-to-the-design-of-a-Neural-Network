@@ -107,7 +107,6 @@ Draw a digit and get live predictions.
 ---
 
 
-```markdown
 ## ▶️ Example Script
 
 The file `run_NN.py` provides a complete example of how to use the neural network.
@@ -120,7 +119,6 @@ It typically includes:
 
 If you're unsure where to start, run this file first:
 
-```bash
 python run_NN.py
 
 ## 🖼️ Image Preprocessing
