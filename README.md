@@ -20,10 +20,9 @@ This project implements a fully connected neural network **from scratch (NumPy-b
 
 ```bash
 .
-├── neural_network.py
-├── fotos/
-├── final_weights_quad.txt
-├── final_weights_entropy.txt
+├── our_NN/
+├── NN.py
+├── run_NN.py
 └── README.md
 ```
 
